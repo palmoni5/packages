@@ -48,6 +48,7 @@ jobs:
       - name: Full Flutter test suite
         run: flutter test
       - name: Product VM isolate transfers
+        if: ${{ hashFiles('source/third_party/packages/flutter_svg/test/isolate_safe_loaders_test.dart') != '' }}
         run: flutter test --dart-define=dart.vm.product=true test/isolate_safe_loaders_test.dart
       - name: Check formatting
         run: dart format --output=none --set-exit-if-changed lib test
